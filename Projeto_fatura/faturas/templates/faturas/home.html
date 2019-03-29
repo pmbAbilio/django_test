@@ -6,10 +6,12 @@
     <div class="media-body">
         <div class="article-metadata">
         <a class="mr-2" href="#">{{ faturas.Vendedor }}</a>
-        <small class="text-muted">{{ faturas.Data }}</small>
+        <small class="text-muted">{{ faturas.Data|date:"F d, Y" }}</small>
         </div>
         <h3><a class="article-title" href="#">{{ faturas.Descricao }}</a></h2>
         <p class="article-content">{{ faturas.Valor }}</p>
+        <p class="article-content">{{ faturas.Client }}</p>
+        <p class="article-content">{{ faturas.imagemUrl }}</p>
     </div>
     </article>
     {% endfor %}
