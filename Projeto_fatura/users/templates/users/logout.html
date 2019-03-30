@@ -1,0 +1,10 @@
+{% extends 'faturas/base.html' %}
+{% block fullSizedContent %}
+<h2>Voce saiu da sua conta</h2>
+<div class="border-top pt-3">
+    <small class="text-muted">
+        Quer entrar de novo? <a class="ml-2" href="{% url 'login' %}">Entrar</a>
+    </small>
+</div>
+    
+{% endblock fullSizedContent %}

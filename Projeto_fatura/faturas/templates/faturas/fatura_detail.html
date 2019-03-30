@@ -1,0 +1,24 @@
+{% extends 'faturas/base.html' %} 
+{% block content %}
+    <h1>Fatura</h1>
+    <article class="media content-section fatura_website_section">
+    <div class="media-body">
+        <div class="article-metadata">
+        <a class="mr-2" >{{ object.Vendedor }}</a>
+        <small class="text-muted">{{ object.Data|date:"F d, Y" }}</small>
+        </div>
+        
+        <div class="media">
+            <img src="{{ object.imagemUrl.url }}" class="img-fluid image_fatura" alt="Responsive image">
+        <div class="media-body">
+            <h3><a class="article-title col-4 ">{{ object.Descricao }}</a></h2>
+            <p class="article-content col-4 ">{{ object.Valor }}</p>
+            {% if object.Client == user %}
+                <a class="btn btn-secundary btn-sm mt-1 mb-1" href="{% url 'Fatura-editar' object.id %}">Alterar</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'Fatura-apagar' object.id %}">Apagar</a>
+            {% endif %}
+        </div>
+        </div>
+    </div>
+    </article>
+{% endblock content %}

@@ -1,19 +1,29 @@
 {% extends 'faturas/base.html' %} 
 {% block content %}
-    <h1>Pagina Inicial de Gestão de Faturas</h1>
+    <h1>Faturas</h1>
     {% for faturas in fatura %}
-    <article class="media content-section">
+    <article class="media content-section fatura_website_section">
     <div class="media-body">
         <div class="article-metadata">
-        <a class="mr-2" href="#">{{ faturas.Vendedor }}</a>
+        <a class="mr-2" href="{% url 'Fatura' faturas.id %}">Fatura {{ faturas.Vendedor }}</a>
         <small class="text-muted">{{ faturas.Data|date:"F d, Y" }}</small>
         </div>
-        <h3><a class="article-title" href="#">{{ faturas.Descricao }}</a></h2>
-        <p class="article-content">{{ faturas.Valor }}</p>
-        <p class="article-content">{{ faturas.Client }}</p>
-        <p class="article-content">{{ faturas.imagemUrl }}</p>
+        
+        <div class="media">
+            <img src="{{ faturas.imagemUrl.url }}" id="zoom_in" onclick="myFunction()" class="img-fluid image_fatura" alt="Responsive image">
+        <div class="media-body">
+            <h3><a class="article-title col-4 " href="#">{{ faturas.Descricao }}</a></h2>
+            <p class="article-content col-4 ">{{ faturas.Valor }}</p>
+        </div>
+        </div>
     </div>
     </article>
+    <script>
+    function myFunction() {
+        var element = document.getElementById("zoom_in");
+            element.classList.toggle("zoom_in");
+        } 
+    </script>
     {% endfor %}
 {% endblock content %}
 

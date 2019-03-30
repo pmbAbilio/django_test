@@ -1,0 +1,16 @@
+{% extends 'faturas/base.html' %} 
+{% load crispy_forms_tags %}
+{% block fullSizedContent %}
+    <div class="content-section fatura_website_section">
+        <form method="POST">
+         {% csrf_token %}
+         <fieldset class="form-group">
+         <legend class="border-bottom mb-4">Registar nova fatura</legend>
+         {{ form|crispy }}
+         </fieldset>
+            <div class="form-group">
+                <button class="btn btn-login" type="submit">Registar</button>
+            </div>
+        </form>
+    </div>
+{% endblock fullSizedContent %}

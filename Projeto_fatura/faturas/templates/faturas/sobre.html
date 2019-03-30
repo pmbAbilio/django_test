@@ -1,6 +1,7 @@
 {% extends 'faturas/base.html' %} 
-{% block content %}
-<h1>Quem Somos</h1>
+{% block fullSizedContent %}
+<div class="content-section fatura_website_section">
+<h1>Quem Somos?</h1>
     <p>Nós somos um pequeno grupo de estudantes que se apercebeu o quanto é dificil gerir as nossas coisas enquanto trabalhamos, cuidamos dos nossos e temos os nossos 
     hobbie. Por isso decidimos criar uma ferramente que fosse acessivel a todos e que podesse ajudar como nos ajudous a nós, obviamente esta ainda em 
     fase de aperfeicoamento mas as funçoes core estão presentes</p>
@@ -14,6 +15,7 @@ entramos, com a nossa ajuda pode guardar todas as suas faturas de forma a nunca 
   <input type="text" class="form-control" rows="1" id="email"></input>
   <label for="sugest">Sugestão:</label>
   <textarea class="form-control" rows="5" id="sugest"></textarea>
-  <button class="btn btn-outline-secondary" for="sugest" type="button">Enviar</button>
+  <button class="btn btn-login full_size" for="sugest" type="button">Enviar</button>
 </div> 
-{% endblock content %}
+</div>
+{% endblock fullSizedContent %}

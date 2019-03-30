@@ -9,7 +9,7 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="{% static 'faturas/main.css' %}">
 
     {% if title %}
@@ -22,57 +22,48 @@
     <header class="site-header">
     <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
-        <a class="navbar-brand mr-4" href="{% url 'Faturas-home' %}">Gestor de faturas</a>
+        <a class="navbar-brand mr-4" style=' color: #000000;' href="{% url 'Faturas-home' %}">Gestor de faturas</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
-            <a class="nav-item nav-link" href="{% url 'Faturas-home' %}">Inicio</a>
-            <a class="nav-item nav-link" href="{% url 'Faturas-about' %}">Sobre Nós</a>
+            <a class="nav-item nav-link nav-faturas" href="{% url 'Faturas-home' %}"><i class="fas fa-home mr-1"></i>Inicio </a>
+            <a class="nav-item nav-link nav-faturas" href="{% url 'Faturas-about' %}"><i class="fas fa-info mr-1"></i>Sobre Nós</a>
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
-            <a class="nav-item nav-link" href="#">Entrar</a>
-            <a class="nav-item nav-link" href="#">Registar</a>
+            {% if user.is_authenticated %}
+                <a class="nav-item nav-link nav-faturas" href="{% url 'Fatura-nova' %}"><i class="fas fa-plus"></i>Registar nova fatura</a>
+                <a class="nav-item nav-link nav-faturas" href="{% url 'profile' %}"><i class="fas fa-user-circle mr-1"></i>{{user.first_name}} {{user.last_name}}</a>
+                <a class="nav-item nav-link nav-faturas" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt mr-1"></i>Sair</a>
+            {% else %}
+            <a class="nav-item nav-link nav-faturas" href="{% url 'login' %}"><i class="fas fa-sign-in-alt mr-1"></i>
+ Entrar</a>
+            <a class="nav-item nav-link nav-faturas" href="{% url 'register_user' %}"><i class="fas fa-user-plus mr-1"></i>
+Registar</a>
+            {% endif %}
             </div>
         </div>
         </div>
     </nav>
     </header>
     
+    
     <main role="main" class="container">
     <div class="row">
-        <div class="col-md-8">
-        {% if messages %}
+     <div class="col-md-12">
+     {% if messages %}
             {% for message in messages %}
             <div class="alert alert-{{message.tags}}">
             {{message}}
             </div>
             {% endfor %}
         {% endif %}
+        {% block fullSizedContent %}{% endblock %}
         {% block content %}{% endblock %}
-        </div>
         
-            <div class="col-md-4">
-            <div class="content-section">
-                <h3>Menu Lateral</h3>
-                <p class='text-muted'>Aqui pode filtrar quais a faturas pretende que sejam apresentadas nesta pagina.
-                <ul class="list-group">
-                    <li class="list-group-item list-group-item-light">As mais recentes</li>
-                    <li class="list-group-item list-group-item-light">As mais antigas</li>
-                    <li class="list-group-item list-group-item-light">Deste Ano</li>
-                    <li class="list-group-item list-group-item-light">Do ano passado</li>
-                </ul>
-                </p>
-                <p class='text-muted'>Aqui pode adicionar ou remover faturas.
-                <ul class="list-group">
-                    <li class="list-group-item list-group-item-light">Adicionar</li>
-                </ul>
-                </p>
-            </div>
-            </div>
-    
+        </div>
     </div>
     </main>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -1,16 +1,14 @@
-body {
-  background: #fafafa;
-  color: #333333;
-  margin-top: 5rem;
-}
-
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  color: #444444;
+  color: #000000;
+}
+
+.secondary-text-color {
+  color: #000000;
 }
 
 ul {
@@ -18,15 +16,19 @@ ul {
 }
 
 .bg-steel {
-  background-color: #5f788a;
+  background-color: #fafafa;
+}
+
+.nav-faturas:hover {
+  border-bottom: 2px solid #e28c0bf6;
 }
 
 .site-header .navbar-nav .nav-link {
-  color: #cbd5db;
+  color: #000000;
 }
 
 .site-header .navbar-nav .nav-link:hover {
-  color: #ffffff;
+  color: #000000;
 }
 
 .site-header .navbar-nav .nav-link.active {
@@ -36,7 +38,7 @@ ul {
 .content-section {
   background: #ffffff;
   padding: 10px 20px;
-  border: 1px solid #dddddd;
+  border: 1px solid #000000;
   border-radius: 3px;
   margin-bottom: 20px;
 }
@@ -46,7 +48,7 @@ ul {
 }
 
 a.article-title:hover {
-  color: #428bca;
+  color: #e28c0bf6;
   text-decoration: none;
 }
 
@@ -86,4 +88,61 @@ a.article-title:hover {
 
 .account-heading {
   font-size: 2.5rem;
+}
+
+.image_fatura {
+  width: 200px;
+  height: 200px;
+}
+
+.zoom_in {
+  width: 70%;
+  height: 70%;
+}
+
+body {
+  margin-top: 5rem;
+  /*background-image: url("https://images.freeimages.com/images/large-previews/bfb/paperwork-1057139.jpg");*/
+  background-image: url("../../../media/back.jpg");
+  height: 400px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+h1,
+h2 {
+  color: #000000;
+  font-weight: 600;
+}
+p {
+  color: black;
+}
+.login-main {
+  width: 25%;
+}
+.btn-login {
+  background-color: #e28c0bf6;
+  color: #000000;
+}
+
+.btn-login:hover {
+  background-color: blanchedalmond;
+  color: black;
+}
+
+.fatura_website_section {
+}
+
+.full_size {
+  width: 100%;
+}
+
+.main-row {
+  margin-top: 15%;
+}
+
+@media only screen and (max-width: 600px) {
+  .login-main {
+    width: 45%;
+  }
 }

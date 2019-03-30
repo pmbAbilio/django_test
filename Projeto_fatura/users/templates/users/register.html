@@ -1,7 +1,7 @@
 {% extends 'faturas/base.html' %} 
 {% load crispy_forms_tags %}
-{% block content %}
-    <div class="content-section">
+{% block fullSizedContent %}
+    <div class="content-section fatura_website_section">
         <form method="POST">
          {% csrf_token %}
          <fieldset class="form-group">
@@ -9,13 +9,13 @@
          {{ form|crispy }}
          </fieldset>
             <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Registar</button>
+                <button class="btn btn-login" type="submit">Registar</button>
             </div>
         </form>
         <div class="border-top pt-3">
         <small class="text-muted">
-        Já tens conta? <a class="ml-2" href="#">Entrar</a>
+        Já tens conta? <a class="ml-2" href="{% url 'login' %}">Entrar</a>
         </small>
         </div>
     </div>
-{% endblock content %}
+{% endblock fullSizedContent %}
