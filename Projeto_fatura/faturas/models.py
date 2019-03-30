@@ -10,7 +10,7 @@ class Fatura(models.Model):
     Data = models.DateField(default=timezone.now())
     imagemUrl = models.ImageField(
         default='default.jpg', upload_to='imagens_faturas')
-    Descricao = models.TextField(default="Descrição da fatura")
+    Descricao = models.TextField(default="Descrição da fatura", max_length=200)
     Valor = models.TextField(default="0,0€")
     Client = models.ForeignKey(User, on_delete=models.CASCADE)
 

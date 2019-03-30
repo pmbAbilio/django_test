@@ -3,16 +3,14 @@ from .models import Fatura
 from django.contrib.auth.models import User
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib import messages
 
 
 def home(request):
-    if request.user.is_authenticated:
-        return render(request, 'faturas/home.html', {'title': "As minhhas faturas", 'fatura': Fatura.objects.filter(Client=request.user)})
-    else:
-        return render(request, 'faturas/homeUnauth.html')
+    return render(request, 'faturas/homeUnauth.html')
 
 
-class FaturaListView(ListView):
+class FaturaListView(LoginRequiredMixin, ListView):
     template_name = 'faturas/home.html'
     context_object_name = 'fatura'
     ordering = ['-Data']
@@ -31,6 +29,8 @@ class FaturaCreateView(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.Client = self.request.user
+        if 'imagemUrl' in self.request.FILES:
+            form.instance.imagemUrl = self.request.FILES['imagemUrl']
         return super().form_valid(form)
 
 
@@ -40,6 +40,8 @@ class FaturaUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def form_valid(self, form):
         form.instance.Client = self.request.user
+        if 'imagemUrl' in self.request.FILES:
+            form.instance.imagemUrl = self.request.FILES['imagemUrl']
         return super().form_valid(form)
 
     def test_func(self):

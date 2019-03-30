@@ -2,10 +2,10 @@
 {% load crispy_forms_tags %}
 {% block fullSizedContent %}
     <div class="content-section fatura_website_section">
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data">
          {% csrf_token %}
          <fieldset class="form-group">
-         <legend class="border-bottom mb-4">Registar nova fatura</legend>
+         <legend class="border-bottom mb-4">Fatura</legend>
          {{ form|crispy }}
          </fieldset>
             <div class="form-group">

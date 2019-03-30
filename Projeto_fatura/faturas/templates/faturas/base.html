@@ -22,26 +22,27 @@
     <header class="site-header">
     <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
         <div class="container">
-        <a class="navbar-brand mr-4" style=' color: #000000;' href="{% url 'Faturas-home' %}">Gestor de faturas</a>
+        <a class="navbar-brand mr-4" style=' color: #000000;' href="{% url 'home' %}">Gestor de faturas</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
-            <a class="nav-item nav-link nav-faturas" href="{% url 'Faturas-home' %}"><i class="fas fa-home mr-1"></i>Inicio </a>
-            <a class="nav-item nav-link nav-faturas" href="{% url 'Faturas-about' %}"><i class="fas fa-info mr-1"></i>Sobre Nós</a>
+            {% if user.is_authenticated %}
+            <a class="nav-item nav-link nav-faturas" href="{% url 'Faturas-home' %}">As minhas faturas</a>
+            {% endif %}
+            <a class="nav-item nav-link nav-faturas" href="{% url 'Faturas-about' %}">Sobre Nós</a>
+             <a class="nav-item nav-link nav-faturas" href="{% url 'Faturas-about' %}">Politica de privacidade</a>
             </div>
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
             {% if user.is_authenticated %}
-                <a class="nav-item nav-link nav-faturas" href="{% url 'Fatura-nova' %}"><i class="fas fa-plus"></i>Registar nova fatura</a>
+                <a class="nav-item nav-link nav-faturas" href="{% url 'Fatura-nova' %}"><i class="fas fa-plus mr-1"></i>Registar nova fatura</a>
                 <a class="nav-item nav-link nav-faturas" href="{% url 'profile' %}"><i class="fas fa-user-circle mr-1"></i>{{user.first_name}} {{user.last_name}}</a>
                 <a class="nav-item nav-link nav-faturas" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt mr-1"></i>Sair</a>
             {% else %}
-            <a class="nav-item nav-link nav-faturas" href="{% url 'login' %}"><i class="fas fa-sign-in-alt mr-1"></i>
- Entrar</a>
-            <a class="nav-item nav-link nav-faturas" href="{% url 'register_user' %}"><i class="fas fa-user-plus mr-1"></i>
-Registar</a>
+            <a class="nav-item nav-link nav-faturas" href="{% url 'login' %}"><i class="fas fa-sign-in-alt mr-1"></i>Entrar</a>
+            <a class="nav-item nav-link nav-faturas" href="{% url 'register_user' %}"><i class="fas fa-user-plus mr-1"></i>Registar</a>
             {% endif %}
             </div>
         </div>
@@ -60,9 +61,11 @@ Registar</a>
             </div>
             {% endfor %}
         {% endif %}
+       
         {% block fullSizedContent %}{% endblock %}
-        {% block content %}{% endblock %}
-        
+       {% if user.is_authenticated %}
+       {% block content %}{% endblock %}
+       {% endif %}
         </div>
     </div>
     </main>
