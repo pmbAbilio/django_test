@@ -4,6 +4,7 @@ from . import views
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('policy/', views.policy, name='policy'),
     path('faturas/', FaturaListView.as_view(), name='Faturas-home'),
     path('fatura/<int:pk>/', FaturaDetailView.as_view(), name='Fatura'),
     path('fatura/nova/', FaturaCreateView.as_view(), name='Fatura-nova'),

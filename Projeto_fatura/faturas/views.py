@@ -10,6 +10,10 @@ def home(request):
     return render(request, 'faturas/homeUnauth.html')
 
 
+def policy(request):
+    return render(request, 'faturas/policy.html')
+
+
 class FaturaListView(LoginRequiredMixin, ListView):
     template_name = 'faturas/home.html'
     context_object_name = 'fatura'
