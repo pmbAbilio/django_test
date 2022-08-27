@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '*t5*fwi7mzoeh3v7(k_qvkn9nck2gj6b@xn85x##(ym)h%4vf('
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['192.168.0.19', 'localhost']
+ALLOWED_HOSTS = ['pmba.pt', 'localhost']
 
 
 # Application definition
@@ -121,8 +121,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+#STATIC_ROOT = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', 'static'))
+#STATIC_ROOT = '/home/pedroabilio/django_test/Projeto_fatura/static'
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+#MEDIA_ROOT = '/home/pedroabilio/django_test/Projeto_fatura/media'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = '/media/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

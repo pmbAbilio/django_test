@@ -11,7 +11,7 @@ class Profile(models.Model):
     def __str__(self):
         return "{} {} Perfil".format(self.user.first_name, self.user.last_name)
 
-    def save(self):
+    def save(self, *args, **kwargs):
         super().save()
         img = Image.open(self.image.path)
 
